@@ -20,7 +20,7 @@ class CreateProveedoresTable extends Migration
             $table->string('rut')->nullable();
             $table->string('direccion');
             $table->string('telefono');
-            $table->string('nombre_fantacia')->nullable();
+            $table->string('nombre_fantasia')->nullable();
             $table->timestamps();
         });
     }

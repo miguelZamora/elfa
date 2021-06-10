@@ -9,5 +9,9 @@ class Proveedores extends Model
     //
     protected $fillable = ['nombre', 'email', 'direccion', 'telefono', ];
 
-    
+    public function productos()
+    {
+        return $this->hasMany(Productos::class);
+    }
+
 }

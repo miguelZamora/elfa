@@ -16,6 +16,13 @@ class CreateProductosTable extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->increments('id');
 
+            // relacion entre la tabla productos y categorias llaves foraneas
+            $table->integer('categoria_id')->unsigned();
+            $table->foreign('categoria_id')->references('id')->on('categorias');
+            
+            // relacion entre la tabla productos y proveedores 
+            $table->integer('proveedores_id')->unsigned();;
+            $table->foreign('proveedores_id')->references('id')->on('proveedores');
 
             $table->string('codigo_int');
             $table->string('codigo_ext');
@@ -28,26 +35,10 @@ class CreateProductosTable extends Migration
             $table->string('imagen_5');
 
             $table->decimal('precio_venta',12,2);
-            $table->enum('status',['ACTIVE','INACTIVE'])->on('ACTIVE');
-
-
-
-
-
-
-
-            // relacion entre la tabla productos y categorias llaves foraneas
-            $table->unsignedBigInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            // relacion entre la tabla productos y proveedores 
-            $table->unsignedBigInteger('proveedore_id');
-            $table->foreign('proveedore_id')->references('id')->on('proveedores');
-
-
-
-
+             $table->enum('status',['ACTIVE','INACTIVE'])->on('ACTIVE');
             $table->timestamps();
         });
+        
     }
 
     /**
